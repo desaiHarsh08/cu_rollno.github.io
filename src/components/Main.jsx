@@ -12,7 +12,20 @@ const Main = () => {
   
   const searchData = (e) => {
     console.log(excelData, uid)
-    const obj = excelData.find((ele) => ele.UID.toString() === uid);
+
+    // for(let i = 0; i < excelData.length; i++) {
+    //   if(excelData[i]["UID"].length < 10) {
+    //     excelData[i]["UID"] = excelData[i]["UID"].toString().padStart(10, '0');
+    //     console.log("i");
+    //   }
+    // }
+
+    const obj = excelData.find((ele) => {
+      
+        // return ele.UID.toString().padStart(10, '0') === uid
+        return uid.includes(ele.UID)
+      
+    });
     console.log(obj);
 
     if (obj) {
@@ -24,7 +37,7 @@ const Main = () => {
         <div class='displat-table border-2 w-full border-black rounded'>
           <div class='row-1 uppercase flex w-full border-b-2 border-black'>
               <div class='w-1/2 border-r-2 font-semibold border-black p-2'><span>UID</span></div>
-              <div class='w-1/2 flex justify-center items-centerr py-2'><span>${obj["UID"]}</span></div>
+              <div class='w-1/2 flex justify-center items-centerr py-2'><span>${obj["UID"].toString().padStart(10, '0')}</span></div>
           </div>
           <div class='row-2 uppercase flex w-full border-b-2 border-black'>
               <div class='w-1/2 border-r-2 font-semibold border-black p-2'><span>Name</span></div>
